@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="CustomViewerFor3DModel.Views.Controls.Task5AdditionalControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CustomViewerFor3DModel.Views.Controls"
+             xmlns:converter="clr-namespace:CustomViewerFor3DModel.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converter:InverseBooleanConverter x:Key="inverseBoolConverter"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto" MinWidth="100"/>
+            <ColumnDefinition Width="Auto" MinWidth="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="MIN Z" Grid.Column="0" Grid.Row="0"/>
+        <TextBlock Text="MAX Z" Grid.Column="0" Grid.Row="1"/>
+        <Slider Minimum="-25" Maximum="-5" Grid.Column="1" Grid.Row="0" Value="{Binding MinZ}" IsEnabled="{Binding IsEnabledAnimation, Converter={StaticResource inverseBoolConverter}}" x:Name="minZSlider" Width="Auto" Margin="5"/>
+        <Slider Minimum="5" Maximum="25" Grid.Column="1" Grid.Row="1" Value="{Binding MaxZ}" IsEnabled="{Binding IsEnabledAnimation, Converter={StaticResource inverseBoolConverter}}" x:Name="maxZSlider" MinWidth="100" Margin="5"/>
+        <Button Content="START" Grid.Column="2" Grid.RowSpan="2" Command="{Binding StartAnimationCommand}" IsEnabled="{Binding IsEnabledAnimation, Converter={StaticResource inverseBoolConverter}}" Style="{StaticResource AdditionalButton}"/>
+        <Button Content="STOP" Grid.Column="3" Grid.RowSpan="2" Command="{Binding StopAnimationCommand}" IsEnabled="{Binding IsEnabledAnimation}" Style="{StaticResource AdditionalButton}"/>
+        <CheckBox Content="Enable animation in other levels" Grid.Row="2" Grid.ColumnSpan="2" IsChecked="{Binding IsAnimateModelInOtherPages}" Margin="5"/>
+    </Grid>
+</UserControl>
