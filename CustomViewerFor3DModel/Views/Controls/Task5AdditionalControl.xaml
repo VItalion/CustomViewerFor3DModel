@@ -29,6 +29,6 @@
         <Slider Minimum="5" Maximum="25" Grid.Column="1" Grid.Row="1" Value="{Binding MaxZ}" IsEnabled="{Binding IsEnabledAnimation, Converter={StaticResource inverseBoolConverter}}" x:Name="maxZSlider" MinWidth="100" Margin="5"/>
         <Button Content="START" Grid.Column="2" Grid.RowSpan="2" Command="{Binding StartAnimationCommand}" IsEnabled="{Binding IsEnabledAnimation, Converter={StaticResource inverseBoolConverter}}" Style="{StaticResource AdditionalButton}"/>
         <Button Content="STOP" Grid.Column="3" Grid.RowSpan="2" Command="{Binding StopAnimationCommand}" IsEnabled="{Binding IsEnabledAnimation}" Style="{StaticResource AdditionalButton}"/>
-        <CheckBox Content="Enable animation in other levels" Grid.Row="2" Grid.ColumnSpan="2" IsChecked="{Binding IsAnimateModelInOtherPages}" Margin="5"/>
+        <CheckBox Content="Enable animation in other tasks" Grid.Row="2" Grid.ColumnSpan="2" IsChecked="{Binding IsAnimateModelInOtherPages}"/>
     </Grid>
 </UserControl>
